@@ -12,7 +12,7 @@ Submissions.init(
       autoIncrement: true,
     },
     user_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'user',
@@ -20,10 +20,10 @@ Submissions.init(
       }
     },
     requisition_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'requisitions',
+            model: 'requisition',
             key: 'id',
           }
       },
@@ -35,9 +35,10 @@ Submissions.init(
     },
   {
     sequelize,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'submissions',
+    modelName: 'submission',
   }
 );
 

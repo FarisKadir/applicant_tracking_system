@@ -18,10 +18,10 @@ JobTypes.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'job_types',
+    modelName: 'job_type',
   }
 );
 

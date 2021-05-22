@@ -31,25 +31,25 @@ Requisitions.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
-    department_id: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        references: {
-            model: 'departments',
-            key: 'id',
-          }
-    },
     status: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
     },
     job_type_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'job_types',
+            model: 'job_type',
             key: 'id',
           }
+    },
+    department_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+          model: 'department',
+          key: 'id',
+        }
     },
     date_created: {
         type: DataTypes.DATE,
@@ -59,10 +59,10 @@ Requisitions.init(
     },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'requisitions',
+    modelName: 'requisition',
   }
 );
 
