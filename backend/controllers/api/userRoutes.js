@@ -40,7 +40,7 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 
-//Update an existing employee
+//Update an existing user
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const employeeData = await User.update(
@@ -66,7 +66,7 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 
-//Delete existing employee by ID
+//Delete existing user by ID
 router.delete('/:id', async (req, res) => {
     try {
       const employeeData = await User.destroy({
