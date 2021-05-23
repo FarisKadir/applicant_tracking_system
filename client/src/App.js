@@ -1,36 +1,23 @@
-
-import logo from './logo.svg';
+  
+import React from 'react';
 import './App.css';
-import React from "react";
+import LoginButton from './components/LoginButton';
+import LogoutButton from './components/LogoutButton';
+import Profile from './components/Profile';
+import { useAuth0 } from '@auth0/auth0-react';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {response: {}};
-  }
+function App() {
+  const { isLoading } = useAuth0();
 
-  callAPI() {
-      // Calling Express API Here
-      fetch("/api")
-          .then(res => res.json())
-          .then(res => {
-            console.log(JSON.stringify(res));
-            this.setState({response: res});
-          })
-  }
+  if (isLoading) return <div>Loading...</div>
 
-  componentWillMount() {
-      this.callAPI();
-  }
-
-  render(){
-    return (
-      <div className="App">
-        <h2 className="App-intro">{this.state.response.message}</h2>
-      </div>
-    );
-  }
-
+  return (
+    <>
+      <LoginButton />
+      <LogoutButton />
+      <Profile />
+    </>
+  );
 }
 
 export default App;
