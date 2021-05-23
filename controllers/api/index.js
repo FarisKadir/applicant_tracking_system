@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
   });
   
+  
   // -------- Add This
   // 1. * GET Test. */
   router.get('/api', function(req, res, next) {
