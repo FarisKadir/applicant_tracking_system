@@ -1,23 +1,23 @@
 const router = require('express').Router();
-const { Users } = require('../../models');
+const { Jobs } = require('../../models');
 
 
-//Get all users
+//Get All Jobs
 router.get('/', async (req, res) => {
   try {
-    const userData = await Users.findAll(req.body);
-    res.status(200).json(userData);
+    const jobData = await Jobs.findAll(req.body);
+    res.status(200).json(jobData);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
 
-//Create user
+//Create Job
 router.post('/', async (req, res) => {
     try {
-        const userData = await Users.create(req.body);
-        return res.status(200).json({userData});
+        const jobData = await Jobs.create(req.body);
+        return res.status(200).json({jobData});
     
       } catch (err) {
         res.status(400).json(err);
@@ -25,10 +25,10 @@ router.post('/', async (req, res) => {
 });
 
 
-//Update an existing user
+//Update an existing job
 router.put('/:id', async (req, res) => {
   try {
-    const userData = await Users.update(
+    const jobData = await Jobs.update(
       {
         ...req.body,
       },
@@ -39,33 +39,33 @@ router.put('/:id', async (req, res) => {
       },
     );
 
-    if (!userData) {
-      res.status(404).json({ message: 'No users found with this id!' });
+    if (!jobData) {
+      res.status(404).json({ message: 'No employees found with this id!' });
       return;
     }
 
-    res.status(200).json("We've updated that user!");
+    res.status(200).json("We've updated that job!");
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 
-//Delete an existing user
+//Delete an existing job
 router.delete('/:id', async (req, res) => {
     try {
-      const userData = await Users.destroy({
+      const jobData = await Jobs.destroy({
         where:  {
           id: req.params.id,
         },
       });
 
-      if (!userData) {
-        res.status(404).json({ message: 'No Users found with this id!' });
+      if (!jobData) {
+        res.status(404).json({ message: 'No jobs found with this id!' });
         return;
       }
 
-      res.status(200).json("We've deleted that user!");
+      res.status(200).json("We've deleted that job!");
     } catch (err) {
       res.status(500).json(err);
     }

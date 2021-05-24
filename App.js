@@ -1,15 +1,12 @@
-
-const createError = require('http-errors');
 const express = require('express');
-const path = require('path');
 const session = require('express-session');
-const logger = require('morgan');
-var indexRouter = require('./controllers/api/index');
-var usersRouter = require('./controllers/api/users');
+const path = require('path');
 const app = express();
+const routes = require('./controllers/api');
+const bodyParser = require('body-parser')
 const sequelize = require('./config/connection');
-var cookieParser = require('cookie-parser');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 const sess = {
   secret: '[AxrBM2}PgTqWeA',
   cookie: {},
@@ -21,6 +18,8 @@ const sess = {
 };
 
 
+
+
 const PORT = process.env.PORT || 5000;
 
 
@@ -28,22 +27,19 @@ var cors = require("cors");
 app.use(cors());
 
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+
+
+app.use(session(sess));
+app.use(bodyParser.json());
+app.use('/api', routes);
+
 
 // ---------------- ADD THIS ----------------
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 // --------------------------------
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 
 // ---------------- ADD THIS ----------------
@@ -68,8 +64,11 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({
+    error: err
+  });
 });
+
 
 
 

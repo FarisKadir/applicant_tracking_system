@@ -1,0 +1,42 @@
+[
+    {
+        "title": "jkodnogna",
+        "responsibilities": "iodngdlkagmklag",
+        "requiredQualifications": "iondgoangokag",
+        "preferredQualifications": "dokgnklngklkl",
+        "salary": 15000,
+        "status": true,
+        "job_type_id": 1,
+        "department_id": 1
+    },
+    {
+        "title": "jkodnogna",
+        "responsibilities": "iodngdlkagmklag",
+        "requiredQualifications": "iondgoangokag",
+        "preferredQualifications": "dokgnklngklkl",
+        "salary": 30000,
+        "status": true,
+        "job_type_id": 1,
+        "department_id": 1
+    },
+    {
+        "title": "jkodnogna",
+        "responsibilities": "iodngdlkagmklag",
+        "requiredQualifications": "iondgoangokag",
+        "preferredQualifications": "dokgnklngklkl",
+        "salary": 60000,
+        "status": true,
+        "job_type_id": 1,
+        "department_id": 1
+    },
+    {
+        "title": "jkodnogna",
+        "responsibilities": "iodngdlkagmklag",
+        "requiredQualifications": "iondgoangokag",
+        "preferredQualifications": "dokgnklngklkl",
+        "salary": 120000,
+        "status": true,
+        "job_type_id": 1,
+        "department_id": 1
+    }
+]

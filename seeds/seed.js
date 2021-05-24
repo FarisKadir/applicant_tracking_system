@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { Roles, Departments, JobTypes  } = require('../models');
+const { Roles, Departments, JobTypes, Jobs  } = require('../models');
 const roleData = require('./roleData.json');
 const deptData = require('./deptData.json');
 const jobTypeData = require('./jobTypeData.json');
+const jobData = require('./jobData.json')
 
 
 const seedDatabase = async () => {
@@ -13,19 +14,26 @@ const seedDatabase = async () => {
     });
   }
 
-  for (const role of deptData) {
+  for (const department of deptData) {
     await Departments.create({
-      ...role
+      ...department
     });
   }
 
-  for (const role of jobTypeData) {
+  for (const jobType of jobTypeData) {
     await JobTypes.create({
-      ...role
+      ...jobType
+    });
+  }
+
+  for (const job of jobData) {
+    await Jobs.create({
+      ...job
     });
   }
 
 
   process.exit();
 };
+
 seedDatabase();

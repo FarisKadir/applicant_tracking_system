@@ -19,26 +19,21 @@ Submissions.init(
         key: 'id',
       }
     },
-    requisition_id: {
+    job_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'requisition',
+            model: 'jobs',
             key: 'id',
           }
-      },
-    date_created: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
+      }
     },
   {
     sequelize,
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'submission',
+    modelName: 'submissions',
   }
 );
 

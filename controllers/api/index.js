@@ -1,18 +1,12 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
+const jobRoutes = require('./jobs');
+const userRoutes = require('./users');
+const roleRoutes = require('./roles');
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
-  });
-  
-  
-  // -------- Add This
-  // 1. * GET Test. */
-  router.get('/api', function(req, res, next) {
-    res.send({ message: 'Well Done' });
-  });
+router.use('/jobs', jobRoutes);
+router.use('/users', userRoutes);
+router.use('/roles', roleRoutes);
 
 
 module.exports = router;

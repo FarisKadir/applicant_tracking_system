@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Requisitions extends Model {}
+class Jobs extends Model {}
 
-Requisitions.init(
+Jobs.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,31 +13,27 @@ Requisitions.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     responsibilities: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
     requiredQualifications: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
     },
     preferredQualifications: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
-    salaryRange: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    status: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
+    salary: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
     },
     job_type_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: 'job_type',
             key: 'id',
@@ -45,25 +41,20 @@ Requisitions.init(
     },
     department_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
           model: 'department',
           key: 'id',
         }
-    },
-    date_created: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
+    }
     },
   {
     sequelize,
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'requisition',
+    modelName: 'jobs',
   }
 );
 
-module.exports = Requisitions;
+module.exports = Jobs;

@@ -1,7 +1,7 @@
 const Users = require('./Users');
 const Roles = require('./Roles');
 const Departments = require('./Departments');
-const Requisitions = require('./Requisitions');
+const Jobs = require('./Jobs');
 const JobTypes = require('./JobTypes');
 const Submissions = require('./Submissions');
 
@@ -17,21 +17,21 @@ Users.belongsTo(Roles, {
 
 
 //Relationship between Departments and Requisitions
-Departments.hasOne(Requisitions, {
+Departments.hasOne(Jobs, {
   foreignKey: 'department_id',
 });
 
-Requisitions.belongsTo(Departments, {
+Jobs.belongsTo(Departments, {
   foreignKey: 'department_id'
 });
 
 
 //Relationship between JobTypes and Requisitions
-JobTypes.hasOne(Requisitions, {
+JobTypes.hasOne(Jobs, {
   foreignKey: 'job_type_id',
 });
 
-Requisitions.belongsTo(JobTypes, {
+Jobs.belongsTo(JobTypes, {
   foreignKey: 'job_type_id'
 });
 
@@ -45,12 +45,12 @@ Submissions.belongsTo(Users, {
 });
 
 //Relationship between Submissions and Requisitions
-Requisitions.hasMany(Submissions, {
-  foreignKey: 'requisition_id',
+Jobs.hasMany(Submissions, {
+  foreignKey: 'job_id',
 });
 
-Submissions.belongsTo(Requisitions, {
-  foreignKey: 'requisition_id'
+Submissions.belongsTo(Jobs, {
+  foreignKey: 'job_id'
 });
 
 
@@ -63,6 +63,6 @@ module.exports = {
   Roles,
   Departments, 
   JobTypes, 
-  Requisitions,
+  Jobs,
   Submissions 
 };
