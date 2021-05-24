@@ -9,6 +9,7 @@ Users.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true
     },
     first_name: {
       type: DataTypes.STRING,
@@ -20,7 +21,6 @@ Users.init(
     },
     role_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: 'roles',
         key: 'id',
@@ -28,7 +28,8 @@ Users.init(
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      default: null,
       unique: true,
       validate: {
         isEmail: true,
