@@ -13,31 +13,74 @@ router.get('/', async (req, res) => {
 });
 
 
-//Get All Submissions by a user id
+//Get a Submissions by submission id
 
 router.get('/:id', async (req, res) => {
     try {
-      const subData = await Submissions.update(
-        {
-          ...req.body,
-        },
+      const subData = await Submissions.findByPk(req.params.id);
+  
+      if (!subData) {
+        res.status(404).json({ message: 'No submissions found with this submission id!' });
+        return;
+      }
+  
+      res.status(200).json(subData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+
+
+//Get All Submissions by a user id
+
+router.get('/byuser/:id', async (req, res) => {
+
+    try {
+      const subData = await Submissions.findAll(
         {
           where:  {
-            id: req.params.id, //need to update this code to look at the user table.
+            user_id: req.params.id,
           },
         },
       );
   
       if (!subData) {
-        res.status(404).json({ message: 'No submissions found with this id!' });
+        res.status(404).json({ message: 'No submissions found with this user id!' });
         return;
       }
   
-      res.status(200).json("We've updated that submissions!");
+      res.status(200).json(subData);
     } catch (err) {
       res.status(500).json(err);
     }
   });
+
+
+//Get All Submissions by a job id
+
+router.get('/byjob/:id', async (req, res) => {
+
+    try {
+      const subData = await Submissions.findAll(
+        {
+          where:  {
+            job_id: req.params.id,
+          },
+        },
+      );
+  
+      if (!subData) {
+        res.status(404).json({ message: 'No submissions found with this user id!' });
+        return;
+      }
+  
+      res.status(200).json(subData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
 
 
 //Create Job
