@@ -5,23 +5,25 @@ import JSONPretty from 'react-json-pretty';
 const Profile = () => {
   const { user, isAuthenticated } = useAuth0();
 
-  
-  let isAdmin = "";
+  let profile ='';
 
-  if (user.["https://faris-kadir-applicant-tracking.herokuapp.com/"]) {
-    isAdmin = true;
+
+  if (user[Object.values({user})[0]] == "admin") {
+    profile =  ( 
+      <div>
+         <img src={user.picture} alt={user.name} />
+         <h2>Username: {user.name}</h2>
+         <p>Email: {user.email}</p>
+         <JSONPretty data={user} />
+       </div>
+     );
   } ;
   
 
 
   return (
-    isAuthenticated && isAdmin && ( 
-     <div>
-        <img src={user.picture} alt={user.name} />
-        <h2>Username: {user.name}</h2>
-        <p>Email: {user.email}</p>
-        <JSONPretty data={user} />
-      </div>
+    isAuthenticated && (
+      {profile}
     )
   )
 }
