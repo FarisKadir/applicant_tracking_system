@@ -1,9 +1,11 @@
 import React from 'react';
-import NoAuthNav from '../NoAuthNav/index';
-import ApplicantNav from '../ApplicantNav/index';
-import AdminNav from '../AdminNav/index';
-import LoginButton from '../LoginButton';
-import LogoutButton from '../LogoutButton';
+import NoAuthNav from '../../Functional/NoAuthNav/index';
+import ApplicantNav from '../../Functional/ApplicantNav/index';
+import AdminNav from '../../Functional/AdminNav/index';
+import LoginButton from '../../Functional//LoginButton/LoginButton';
+import LogoutButton from '../../Functional//LogoutButton/LogoutButton';
+
+
 
 const Navbar = () =>  {
 
