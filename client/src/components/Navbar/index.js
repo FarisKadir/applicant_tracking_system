@@ -1,9 +1,9 @@
 import React from 'react';
-import NoAuthNav from '../../Functional/NoAuthNav/index';
-import ApplicantNav from '../../Functional/ApplicantNav/index';
-import AdminNav from '../../Functional/AdminNav/index';
-import LoginButton from '../../Functional//LoginButton/LoginButton';
-import LogoutButton from '../../Functional//LogoutButton/LogoutButton';
+import NoAuthNav from '../NoAuthNav';
+import ApplicantNav from '../ApplicantNav';
+import AdminNav from '../AdminNav';
+import LoginButton from '../LoginButton';
+import LogoutButton from '../LogoutButton';
 
 
 
