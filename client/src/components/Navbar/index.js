@@ -20,7 +20,7 @@ const Navbar = () =>  {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
-                        <ul className="navbar-nav ml-auto">
+                        <ul className="nav justify-content-end navbar-nav ml-auto">
                             <NoAuthNav />
                             <ApplicantNav />
                             <AdminNav />

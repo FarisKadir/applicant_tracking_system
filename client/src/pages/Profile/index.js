@@ -4,6 +4,7 @@ import JSONPretty from 'react-json-pretty';
 
 
 const Profile = () => {
+  
   const { user, isAuthenticated } = useAuth0();
   // "http://www.user.app_role"
 
