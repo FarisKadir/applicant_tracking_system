@@ -13,10 +13,10 @@ router.get('/', async (req, res) => {
 });
 
 
-//Create Job
+//Create job types
 router.post('/', async (req, res) => {
     try {
-        const jobTypesData = await JobTypes.create(req.body);
+        const jobTypesData = await JobTypes.bulkCreate(req.body);
         return res.status(200).json({jobTypesData});
     
       } catch (err) {

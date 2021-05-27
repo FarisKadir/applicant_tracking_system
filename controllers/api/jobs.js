@@ -79,13 +79,14 @@ router.get('/:id', async (req, res) => {
 //Create Job
 router.post('/', async (req, res) => {
     try {
-        const jobData = await Jobs.create(req.body);
+        const jobData = await Jobs.bulkCreate(req.body);
         return res.status(200).json({jobData});
     
       } catch (err) {
         res.status(400).json(err);
       }
 });
+
 
 
 //Update an existing job

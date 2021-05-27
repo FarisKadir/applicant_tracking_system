@@ -13,16 +13,19 @@ router.get('/', async (req, res) => {
 });
 
 
-//Create Job
+//Create departments
 router.post('/', async (req, res) => {
     try {
-        const deptData = await Departments.create(req.body);
+        const deptData = await Departments.bulkCreate(req.body);
         return res.status(200).json({deptData});
     
       } catch (err) {
         res.status(400).json(err);
       }
 });
+
+
+
 
 
 //Update an existing departments

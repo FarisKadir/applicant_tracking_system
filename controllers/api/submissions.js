@@ -83,16 +83,17 @@ router.get('/byjob/:id', async (req, res) => {
 
 
 
-//Create Job
+//Create Submissions
 router.post('/', async (req, res) => {
     try {
-        const subData = await Submissions.create(req.body);
+        const subData = await Submissions.bulkCreate(req.body);
         return res.status(200).json({subData});
     
       } catch (err) {
         res.status(400).json(err);
       }
 });
+
 
 
 //Update an existing submissions

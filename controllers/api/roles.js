@@ -13,10 +13,10 @@ router.get('/', async (req, res) => {
 });
 
 
-//Create Job
+//Create roles
 router.post('/', async (req, res) => {
     try {
-        const roleData = await Roles.create(req.body);
+        const roleData = await Roles.bulkCreate(req.body);
         return res.status(200).json({roleData});
     
       } catch (err) {
