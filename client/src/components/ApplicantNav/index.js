@@ -23,10 +23,10 @@ const ApplicantNav = () => {
         <Link to="/">
           <li className="nav-item"><a className="nav-link" href="#">Home</a></li>
         </Link>
-        <Link to="/">
-          <li className="nav-item"><a className="nav-link" href="#">View Requisitions</a></li>
+        <Link to="/jobs">
+          <li className="nav-item"><a className="nav-link" href="#">Jobs</a></li>
         </Link>
-        <Link to="/">
+        <Link to="/profile">
           <li className="nav-item"><a className="nav-link" href="#">Profile</a></li>
         </Link>
       </>

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
+        <div className="fixed-bottom">
             This is my footer!
         </div>
 

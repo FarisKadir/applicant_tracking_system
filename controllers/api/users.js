@@ -13,19 +13,9 @@ router.get('/', async (req, res) => {
 });
 
 
-//Create user
-router.post('/', async (req, res) => {
-    try {
-        const userData = await Users.create(req.body);
-        return res.status(200).json({userData});
-    
-      } catch (err) {
-        res.status(400).json(err);
-      }
-});
 
 //Create multiple users
-router.post('/seed', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
       const userData = await Users.bulkCreate(req.body);
       return res.status(200).json({userData});

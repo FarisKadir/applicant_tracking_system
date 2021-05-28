@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import Requisitions from './pages/Requisitions';
+import Jobs from './pages/Jobs';
 import UserManagement from './pages/UserManagement';
 import Footer from './components/Footer';
 
@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/profile" component={Profile}/>
-          <Route exact path="/requisitions" component={Requisitions}/>
+          <Route exact path="/jobs" component={Jobs}/>
           <Route exact path="/usermanagement" component={UserManagement} />
           <Route path="*" component={Home} />
         </Switch>

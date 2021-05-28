@@ -23,8 +23,8 @@ const AdminNav = () => {
         <Link to="/">
           <li className="nav-item"><a className="nav-link" href="#">Home</a></li>
         </Link>
-        <Link to="/requisitions">
-          <li className="nav-item"><a className="nav-link" href="#">View Requisitions</a></li>
+        <Link to="/jobs">
+          <li className="nav-item"><a className="nav-link" href="#">View Jobs</a></li>
         </Link>
         <Link to="/usermanagement">
           <li className="nav-item"><a className="nav-link" href="#">Manage Users</a></li>

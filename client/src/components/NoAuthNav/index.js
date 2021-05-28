@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const NoAuthNav = () => {
 
-  const  { user, isAuthenticated } = useAuth0();
+  const  { isAuthenticated } = useAuth0();
 
 
   return (

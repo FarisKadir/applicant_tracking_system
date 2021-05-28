@@ -21,7 +21,7 @@ router.get('/bydept/:id', async (req, res) => {
     const jobData = await Jobs.findAll(
       {
         where:  {
-          dept_id: req.params.id,
+          department_id: req.params.id,
         },
       },
     );
