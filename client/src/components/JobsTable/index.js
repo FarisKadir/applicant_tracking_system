@@ -4,16 +4,24 @@ import JobRow from '../JobRow';
 
 function JobsTable () {
 
-    const [jobList, setJobList] = useState([]);
+    const [jobs, setJobs] = useState([]);
+    const [count, setCount] = useState(0);
+
 
 
     useEffect(() => {
-        API.getData("jobs").then(res => {setJobList(res.data.rows);});       
+        API.getData("jobs")
+            .then(res => {
+                setJobs(res.data.rows);
+                setCount(res.data.count);
+        });
     },[])
+
+    
             
 
     return (
-        <ul>
+        <>
             <table className=" table table-sm table-striped table-hover table-bordered">
                 <thead>
                     <tr>
@@ -22,18 +30,22 @@ function JobsTable () {
                         <th>Salary</th>
                         <th>Job Type</th>
                         <th>Department</th>
-                        <th>Edit / Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <JobRow jobData={jobList}/>
+                    {jobs.map((job, index) => (
+                        <JobRow key={index} jobData={job} />
+                    ))}
                 </tbody>
                 <tfoot>
+                    <tr>
+                        <th>Total Openings:</th>
+                        <td>{count}</td>
 
+                    </tr>
                 </tfoot>
             </table>
-            
-        </ul>
+        </>
     )
 };
 
