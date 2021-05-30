@@ -1,11 +1,14 @@
 import React from 'react';
-import JobSearch from '../../components/JobSearch';
+import JobsTable from '../../components/JobsTable';
 
 const Jobs = () =>  {
 
     return (
         <>
-            <JobSearch />
+            <div className="container s12 m6 l6 xl6">
+                <JobsTable />
+            </div>
+            
         </>
     )
 };

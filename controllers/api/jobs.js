@@ -1,11 +1,22 @@
 const router = require('express').Router();
-const { Jobs } = require('../../models');
+const { Jobs, Departments, JobTypes } = require('../../models');
+
 
 
 //Get All Jobs
 router.get('/', async (req, res) => {
   try {
-    const jobData = await Jobs.findAll(req.body);
+    const jobData = await Jobs.findAndCountAll({ 
+      include: 
+      [
+        { 
+          model: Departments
+        },
+        { 
+          model: JobTypes
+        },
+    ]
+    });
     res.status(200).json(jobData);
   } catch (err) {
     res.status(400).json(err);
@@ -19,6 +30,17 @@ router.get('/bydept/:id', async (req, res) => {
 
   try {
     const jobData = await Jobs.findAll(
+      { 
+        include: 
+          [
+            { 
+              model: Departments
+            },
+            { 
+              model: JobTypes
+            },
+        ]
+      },
       {
         where:  {
           department_id: req.params.id,
@@ -44,6 +66,17 @@ router.get('/byjobtype/:id', async (req, res) => {
 
   try {
     const jobData = await Jobs.findAll(
+      { 
+        include: 
+          [
+            { 
+              model: Departments
+            },
+            { 
+              model: JobTypes
+            },
+        ]
+      },
       {
         where:  {
           job_type_id: req.params.id,

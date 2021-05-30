@@ -22,7 +22,7 @@ Departments.hasOne(Jobs, {
 });
 
 Jobs.belongsTo(Departments, {
-  foreignKey: 'department_id'
+  foreignKey: 'department_id',
 });
 
 

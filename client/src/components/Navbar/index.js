@@ -1,9 +1,6 @@
 import React from 'react';
-import NoAuthNav from '../NoAuthNav';
-import ApplicantNav from '../ApplicantNav';
-import AdminNav from '../AdminNav';
-import LoginButton from '../LoginButton';
-import LogoutButton from '../LogoutButton';
+import NavBarAuth from '../NavBarAuth';
+
 
 
 
@@ -12,20 +9,15 @@ const Navbar = () =>  {
     return (
         <>
             <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
-                        <img src="./assets/images/logo200x200.png" height="100" width="100"/>
-                    </a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <div className="container">
+                    <a className="navbar-brand" href="#"><img src="./assets/images/logo200x200.png" height="100" width="100"/></a>
+                    <p>Your company logo can go here!</p>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarResponsive">
-                        <ul className="nav justify-content-end navbar-nav ml-auto">
-                            <NoAuthNav />
-                            <ApplicantNav />
-                            <AdminNav />
-                            <LoginButton />
-                            <LogoutButton />
+                    <div className="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+                        <ul className="nav navbar-nav">
+                            <NavBarAuth />
                         </ul>
                     </div>
                 </div>
