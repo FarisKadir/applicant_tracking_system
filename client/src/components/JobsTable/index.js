@@ -30,29 +30,32 @@ function JobsTable () {
 
     return (
         <>
-            <table className=" table table-sm table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID #</th>
-                        <th>Title</th>
-                        <th>Salary</th>
-                        <th>Job Type</th>
-                        <th>Department</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {jobs.map((job, index) => (
-                        <JobRow key={index} jobIndex={index} jobData={job} />
-                    ))}
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Total Openings:</th>
-                        <td>{count}</td>
+            <div height="100">
+                <table className=" table table-sm table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID #</th>
+                            <th>Title</th>
+                            <th>Salary</th>
+                            <th>Job Type</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {jobs.map((job, index) => (
+                            <JobRow key={index} jobIndex={index} jobData={job} />
+                        ))}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total Openings:</th>
+                            <td>{count}</td>
 
-                    </tr>
-                </tfoot>
-            </table>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
         </>
     )
 };

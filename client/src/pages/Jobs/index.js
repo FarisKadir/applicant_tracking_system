@@ -1,16 +1,19 @@
 import React from 'react';
 import JobsTable from '../../components/JobsTable';
 import AddJobBtn from '../../components/AddJobBtn';
+import {Container, Col, Row} from 'react-bootstrap';
+
+
 
 const Jobs = () =>  {
 
     return (
         <>
-            <div className="container s12 m6 l6 xl6">
-                <AddJob />
-                <JobsTable />
-            </div>
-            
+                <Row>
+                    <Col></Col>
+                    <Col xs={6}><JobsTable/></Col>
+                    <Col><AddJobBtn/></Col>
+                </Row>
         </>
     )
 };

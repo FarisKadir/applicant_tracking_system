@@ -2,31 +2,29 @@ import React, {useState, useEffect} from 'react';
 import { Button } from 'react-bootstrap';
 import API from '../../utils/API';
 
-export default function JobForm (props) {
+export default function NewJobForm (props) {
 
     //Set the initial state for the job info and update it as the user changes it on the form
-    const [jobInfo, setJobInfo] = useState({
-        title: "Enter A Title",
-        department_id: 0,
-        department: {
-            id: 0,
-            name: "Select A Department"
-        },
-        job_type_id: 0,
-        job_type: {
-            id: 0,
-            name: "Select A Job Type",
-        },
-        responsibilities: 'Enter Responsibilities',
-        requiredQualifications: 'Enter Required Qualifications',
-        preferredQualifications: 'Enter Preferred Qualifications',
-        salary: 0            
-    });
+    const [jobInfo, setJobInfo] = useState({});
 
     useEffect(() => {
-        if (props.jobInfo) {
-            setJobInfo(props.jobInfo)
-        }
+        setJobInfo({
+            title: "Enter A Title",
+            department_id: 0,
+            department: {
+                id: 0,
+                name: "Select A Department"
+            },
+            job_type_id: 0,
+            job_type: {
+                id: 0,
+                name: "Select A Job Type",
+            },
+            responsibilities: 'Enter Responsibilities',
+            requiredQualifications: 'Enter Required Qualifications',
+            preferredQualifications: 'Enter Preferred Qualifications',
+            salary: 0            
+        })
     },[]);
 
 
@@ -44,37 +42,15 @@ export default function JobForm (props) {
         });
     };
 
-     //Anytime a user selects data (department or job type) for the job this will update the current jobInfo state.
-    const handleSelect= (e) => {
-
-        const key = e.target.id;
-        const value = e.target.value;
-
-        console.log(`key: ${key} value: ${value}`);
-
-        setJobInfo({
-            ...jobInfo,
-            [key]: value
-        });
-    };
-
     //This will submit the jobInfo updates to the database
     const handleSubmit = () => {
-        if (props.jobInfo) {    
-            API.updateData(`jobs/${jobInfo.id}`, jobInfo) 
-            .then(res => (
-                console.log('Updated Existing Job')
-            ))
-            .catch(err => console.log(err) );
-        } else {
-            API.createData(`jobs`, [jobInfo]) 
-            .then(res => (
-                console.log('New Job Create')
-            ))
-            .catch(err => console.log(err));
-        };
+        API.createData(`jobs/`, jobInfo) 
+        .then(res => (
+            console.log('toast')
+        ))
+        .catch(err => console.log(err) );
     };
-
+    
     //This calls back the original information from the props.jobInfo
     const handleUndo = (e) =>   {
         setJobInfo(props.jobInfo);
@@ -130,11 +106,6 @@ export default function JobForm (props) {
     },[jobInfo, jobTypes, departments]);
 
 
-    useEffect(() => {
-        console.log(jobInfo);
-    },[jobInfo]);
-
-
 
 
     return (
@@ -144,8 +115,8 @@ export default function JobForm (props) {
                 <label className="mb-1">
                     <strong>Department</strong>
                 </label><br/>
-                <select className="mb-3" id="department_id" onChange={handleOnChange}>
-                    <option value={jobInfo.department_id} >{jobInfo.department.name} </option> 
+                <select className="mb-3">
+                    <option value={jobInfo.department_id}>{jobInfo.department.name}</option>
                     {departments.map((department, index) => {
                         if (department.id != jobInfo.department_id) {
                             return <option key ={index} value={department.id}>
@@ -159,7 +130,7 @@ export default function JobForm (props) {
                 <label className="mb-1">
                 <strong>Job Type</strong>
                 </label><br/>
-                <select className="mb-3" id="job_type_id" onChange={handleOnChange}>
+                <select className="mb-3">
                     <option value={jobInfo.job_type_id}>{jobInfo.job_type.name}</option>
                     {jobTypes.map((jobType, index) => {
                         if (jobType.id != jobInfo.job_type_id) {
@@ -205,6 +176,7 @@ export default function JobForm (props) {
                 <Button className="m-1" variant="warning" onClick={handleUndo}>Undo Changes</Button>
                 <Button className="m-1" variant="danger" onClick={handleDelete}>Delete</Button>
             </div>
+            
         </>
         );
 };
