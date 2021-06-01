@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
+import JobForm from '../JobForm';
 
 
 
 function JobRow (props) {
 
     const job = props.jobData;
+
+    const index = props.jobIndex + 1;
   
 
     const [show, setShow] = useState(false);
@@ -19,7 +22,7 @@ function JobRow (props) {
 
     return (
         <>
-        <tr key={job.id} onClick={() => setShow(true)}>
+        <tr key={index} onClick={() => setShow(true)}>
             <td>
                 {job.id}
             </td>
@@ -42,31 +45,21 @@ function JobRow (props) {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-            key={job.id}
+            key={index + " modal"}
         >
-                <Modal.Header>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        {job.title}
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Group className="mb-3" controlId="formDept">
-
-                        </Form.Group>
-                    </Form>
-                    <h5>Id: {job.id}</h5><br/>
-
-                    <h5>Required Qualifications</h5>
-                    <p>{job.requiredQualifications}</p>
-                    <h5>Preferred Qualifications</h5>
-                    <p>{job.preferredQualifications}</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button className="mb-1" variant="primary" onClick={handleClose}>Close</Button>
-                    <Button variant="primary" onClick={handleShow}>Submit</Button>
-                </Modal.Footer>
-            </Modal>
+            <Modal.Header>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    <h3><strong>{job.title}</strong></h3>
+                    <h5>Job Id: {job.id}</h5>
+                </Modal.Title>
+                <Button className="m-1" variant="primary" onClick={handleClose}>Close</Button>
+            </Modal.Header>
+            <Modal.Body>
+               <JobForm key={index+"Form"} jobInfo={job} handleClose={handleClose}/>
+            </Modal.Body>
+            <Modal.Footer>
+            </Modal.Footer>
+        </Modal>
         </>
     )
 }

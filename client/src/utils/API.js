@@ -1,20 +1,23 @@
 import axios from "axios";
 
 export default {
-    getData: function(data) {
-        return axios.get(`/api/${data}`);
+    getData: function(url) {
+        return axios.get(`/api/${url}`);
     },
 
-    updateData: function(data) {
-        return axios.put(`/api/${data}`);
+    updateData: function(url, obj) {
+        return axios.put(`/api/${url}`, obj);
     },
 
-    createData: function(data) {
-        return axios.post(`/api/${data}`);
+    createData: function(url, obj) {
+        return axios.post(`/api/${url}`, obj);
     },
 
-    deleteData: function(data) {
-        return axios.get(`/api/${data}`);
+    deleteData: function(url, id) {
+        return axios.delete(`/api/${url}/${id}`);
+    },
+    upsertData: function(url, id) {
+        return axios.delete(`/api/${url}/${id}`);
     }
 }
 

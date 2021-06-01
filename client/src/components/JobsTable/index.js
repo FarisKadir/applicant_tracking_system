@@ -7,15 +7,23 @@ function JobsTable () {
     const [jobs, setJobs] = useState([]);
     const [count, setCount] = useState(0);
 
-
-
-    useEffect(() => {
+    const getJobs = () =>   {
         API.getData("jobs")
             .then(res => {
                 setJobs(res.data.rows);
                 setCount(res.data.count);
-        });
+        }).catch(err => {console.log(err)});
+    };
+
+    useEffect(() => {
+        getJobs();
     },[])
+
+
+    useEffect(() => {
+        const id = setInterval(getJobs,3000);
+        return () => clearInterval(id);
+    },[jobs])
 
     
             
@@ -34,7 +42,7 @@ function JobsTable () {
                 </thead>
                 <tbody>
                     {jobs.map((job, index) => (
-                        <JobRow key={index} jobData={job} />
+                        <JobRow key={index} jobIndex={index} jobData={job} />
                     ))}
                 </tbody>
                 <tfoot>
