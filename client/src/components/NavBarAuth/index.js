@@ -13,9 +13,6 @@ const NavBarAuth = () => {
             if (isAuthenticated && user.["http://www.user.app_role"])  {
                 return (
                 <>
-                    <Link to="/">
-                        <li className="nav-item"><span className="nav-link" >Home</span></li>
-                    </Link>
                     <Link to="/jobs">
                         <li className="nav-item"><span className="nav-link" >Manage Job Openings</span></li>
                     </Link>
@@ -29,9 +26,6 @@ const NavBarAuth = () => {
             else if (isAuthenticated && !user.["http://www.user.app_role"]) {
                 return (
                     <>
-                        <Link to="/">
-                            <li className="nav-item"><span className="nav-link" >Home</span></li>
-                        </Link>
                         <Link to="/jobs">
                             <li className="nav-item"><span className="nav-link" >View Job Openings</span></li>
                         </Link>
