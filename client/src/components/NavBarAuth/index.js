@@ -36,7 +36,7 @@ const NavBarAuth = () => {
                             <li className="nav-item"><span className="nav-link" >View Submissions</span></li>
                         </Link>
                         <Link to="/profile">
-                            <li className="nav-item"><a className="nav-link" >Profile</a></li>
+                            <li className="nav-item"><span className="nav-link" >Profile</span></li>
                         </Link>
                         <LogoutButton />
                     </>

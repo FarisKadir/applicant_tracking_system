@@ -123,7 +123,7 @@ const Profile = () => {
         <Button className="m-1" onClick={handleUndo}>Undo Changes</Button>
       </Col>
     </Row>
-  </Container>) : <></>
+  </Container>) : <Container><Row><Col className="offset-md-4"><h1>Loading Data....</h1></Col></Row></Container>
 }
 
 export default Profile

@@ -1,20 +1,21 @@
 import React from 'react';
 import JobsTable from '../../components/JobsTable';
 import AddJobBtn from '../../components/AddJobBtn';
-import {Col, Row} from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 
 
 
 const Jobs = () =>  {
 
     return (
-        <>
-                <Row>
-                    <Col xs={3}></Col>
-                    <Col xs={6}><JobsTable/></Col>
-                    <Col xs={3}><AddJobBtn/></Col>
-                </Row>
-        </>
+        <Container className="m-3">
+            <Row className="mb-3">
+                <Col className="offset-md-5" xs={6}><AddJobBtn/></Col>
+            </Row>
+            <Row>
+                <Col className="offset-md-5" xs={6}><JobsTable/></Col>
+            </Row>
+        </Container>
     )
 };
 

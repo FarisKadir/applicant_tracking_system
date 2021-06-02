@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Submissions from './pages/Submissions';
 import Jobs from './pages/Jobs';
-import UserManagement from './pages/UserManagement';
 
 
 function App() {
