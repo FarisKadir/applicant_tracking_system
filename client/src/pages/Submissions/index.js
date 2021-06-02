@@ -4,7 +4,7 @@ const Submissions = () =>  {
 
     return (
         <>
-            <h1>These are my users</h1>
+            <h1>These are my submissions</h1>
         </>
     )
 };

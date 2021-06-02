@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import Submissions from './pages/Submissions';
 import Jobs from './pages/Jobs';
 import UserManagement from './pages/UserManagement';
-import Footer from './components/Footer';
 
 
 function App() {
@@ -16,11 +16,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/profile" component={Profile}/>
+          <Route exact path="/submissions" component={Submissions}/>
           <Route exact path="/jobs" component={Jobs}/>
-          <Route exact path="/usermanagement" component={UserManagement} />
           <Route path="*" component={Home} />
         </Switch>
-        <Footer />
       </Router>
     </div>
   );

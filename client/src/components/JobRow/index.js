@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { Button, Modal, Form } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Button, Modal} from 'react-bootstrap';
 import JobForm from '../JobForm';
 
 
@@ -22,7 +22,7 @@ function JobRow (props) {
 
     return (
         <>
-        <tr key={index} onClick={() => setShow(true)}>
+        <tr key={index} onClick={handleShow}>
             <td>
                 {job.id}
             </td>

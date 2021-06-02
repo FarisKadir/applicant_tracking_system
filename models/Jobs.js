@@ -20,8 +20,8 @@ Jobs.init(
         allowNull: true,
       },
     requiredQualifications: {
-    type: DataTypes.STRING,
-    allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     preferredQualifications: {
         type: DataTypes.STRING,

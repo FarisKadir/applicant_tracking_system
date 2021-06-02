@@ -14,16 +14,13 @@ const NavBarAuth = () => {
                 return (
                 <>
                     <Link to="/">
-                        <li className="nav-item"><a className="nav-link" href="#">Home</a></li>
+                        <li className="nav-item"><span className="nav-link" >Home</span></li>
                     </Link>
                     <Link to="/jobs">
-                        <li className="nav-item"><a className="nav-link" href="#">View Jobs</a></li>
-                    </Link>
-                    <Link to="/usermanagement">
-                        <li className="nav-item"><a className="nav-link" href="#">Manage Users</a></li>
+                        <li className="nav-item"><span className="nav-link" >Manage Requisitions</span></li>
                     </Link>
                     <Link to="/profile">
-                        <li className="nav-item"><a className="nav-link" href="#">Profile</a></li>
+                        <li className="nav-item"><span className="nav-link" >Profile</span></li>
                     </Link>
                     <LogoutButton />
                 </>
@@ -33,13 +30,13 @@ const NavBarAuth = () => {
                 return (
                     <>
                         <Link to="/">
-                            <li className="nav-item"><a className="nav-link" href="#">Home</a></li>
+                            <li className="nav-item"><span className="nav-link" >Home</span></li>
                         </Link>
                         <Link to="/submissions">
-                            <li className="nav-item"><a className="nav-link" href="#">View Submissions</a></li>
+                            <li className="nav-item"><span className="nav-link" >View Submissions</span></li>
                         </Link>
                         <Link to="/profile">
-                            <li className="nav-item"><a className="nav-link" href="#">Profile</a></li>
+                            <li className="nav-item"><a className="nav-link" >Profile</a></li>
                         </Link>
                         <LogoutButton />
                     </>
@@ -48,7 +45,7 @@ const NavBarAuth = () => {
                 return (
                     <>
                         <Link to="/">
-                            <li className="nav-item"><a className="nav-link" href="#">Home</a></li>
+                            <li className="nav-item"><span className="nav-link" >Home</span></li>
                         </Link>
                         <LoginButton />
                     </>

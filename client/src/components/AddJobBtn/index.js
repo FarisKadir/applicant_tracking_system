@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import JobForm from '../JobForm';
 
@@ -13,7 +13,7 @@ export default function AddJobBtn (props) {
     
     return (
         <>
-            <Button onClick={handleShow}>Add a new job</Button>
+            <Button onClick={handleShow}>Add a new requisition</Button>
                     <Modal
                 show={show}
                 backdrop="static"
@@ -23,7 +23,7 @@ export default function AddJobBtn (props) {
             >
                 <Modal.Header>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        <h3><strong>Add a new job</strong></h3>
+                        <h3><strong>Add a new requisition</strong></h3>
                     </Modal.Title>
                     <Button className="m-1" variant="primary" onClick={handleClose}>Close</Button>
                 </Modal.Header>

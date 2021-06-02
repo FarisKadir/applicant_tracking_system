@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default {
+export const API = {
     getData: function(url) {
         return axios.get(`/api/${url}`);
     },

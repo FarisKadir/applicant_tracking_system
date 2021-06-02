@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Button } from 'react-bootstrap';
-import API from '../../utils/API';
+import {API} from '../../utils/API';
 
 export default function JobForm (props) {
 
@@ -27,7 +27,7 @@ export default function JobForm (props) {
         if (props.jobInfo) {
             setJobInfo(props.jobInfo)
         }
-    },[]);
+    },[props.jobInfo]);
 
 
     //These are all the events that are handled that will update the jobInfo state
@@ -44,19 +44,6 @@ export default function JobForm (props) {
         });
     };
 
-     //Anytime a user selects data (department or job type) for the job this will update the current jobInfo state.
-    const handleSelect= (e) => {
-
-        const key = e.target.id;
-        const value = e.target.value;
-
-        console.log(`key: ${key} value: ${value}`);
-
-        setJobInfo({
-            ...jobInfo,
-            [key]: value
-        });
-    };
 
     //This will submit the jobInfo updates to the database
     const handleSubmit = () => {
@@ -130,12 +117,6 @@ export default function JobForm (props) {
     },[jobInfo, jobTypes, departments]);
 
 
-    useEffect(() => {
-        console.log(jobInfo);
-    },[jobInfo]);
-
-
-
 
     return (
         isLoaded &&
@@ -147,7 +128,7 @@ export default function JobForm (props) {
                 <select className="mb-3" id="department_id" onChange={handleOnChange}>
                     <option value={jobInfo.department_id} >{jobInfo.department.name} </option> 
                     {departments.map((department, index) => {
-                        if (department.id != jobInfo.department_id) {
+                        if (department.id !== jobInfo.department_id) {
                             return <option key ={index} value={department.id}>
                                 {department.name}
                             </option>
@@ -162,7 +143,7 @@ export default function JobForm (props) {
                 <select className="mb-3" id="job_type_id" onChange={handleOnChange}>
                     <option value={jobInfo.job_type_id}>{jobInfo.job_type.name}</option>
                     {jobTypes.map((jobType, index) => {
-                        if (jobType.id != jobInfo.job_type_id) {
+                        if (jobType.id !== jobInfo.job_type_id) {
                             return <option key ={index} value={jobType.id}>
                                 {jobType.name}
                             </option>

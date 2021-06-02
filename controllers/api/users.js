@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users } = require('../../models');
+const { Users, Roles } = require('../../models');
 
 
 //Get all users
@@ -11,6 +11,18 @@ router.get('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+//Get user by id
+router.get('/:id', async (req, res) => {
+  try {
+    const userData = await Users.findByPk(req.params.id);
+    
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 
 
 
@@ -40,12 +52,13 @@ router.put('/:id', async (req, res) => {
       },
     );
 
-    if (!userData) {
-      res.status(404).json({ message: 'No users found with this id!' });
-      return;
+    console.log(res);
+
+    if (userData == [0]) {
+      return res.status(404).json('No users found with this id!');
     }
 
-    res.status(200).json("We've updated that user!");
+    return res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
   }
