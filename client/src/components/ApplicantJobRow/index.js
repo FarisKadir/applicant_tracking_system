@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import { Button, Modal} from 'react-bootstrap';
-import JobForm from '../JobForm';
+import ApplyForm from '../ApplyForm';
 
 
 
-function JobRow (props) {
+
+function ApplicantJobRow (props) {
 
     const job = props.jobData;
 
-    const index = props.jobIndex + 1;
+    const index = props.kpbIndex + 1;
   
 
     const [show, setShow] = useState(false);
@@ -55,13 +56,14 @@ function JobRow (props) {
                 <Button className="m-1" variant="primary" onClick={handleClose}>Close</Button>
             </Modal.Header>
             <Modal.Body>
-               <JobForm key={index+"Form"} jobInfo={job} handleClose={handleClose}/>
+               <ApplyForm key={index+"Form"} jobInfo={job} handleClose={handleClose}/>
             </Modal.Body>
             <Modal.Footer>
+            
             </Modal.Footer>
         </Modal>
         </>
     )
 }
 
-export default JobRow
+export default ApplicantJobRow

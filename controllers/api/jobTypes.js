@@ -5,7 +5,15 @@ const { JobTypes } = require('../../models');
 //Get All JobTypes
 router.get('/', async (req, res) => {
   try {
-    const jobTypesData = await JobTypes.findAll(req.body);
+    const jobTypesData = await JobTypes.findAll({
+      include: 
+      [
+        { 
+          all: true,
+          nested: true
+        },
+    ]
+    });
     res.status(200).json(jobTypesData);
   } catch (err) {
     res.status(400).json(err);

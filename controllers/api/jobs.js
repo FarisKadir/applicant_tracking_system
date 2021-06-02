@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Jobs, Departments, JobTypes } = require('../../models');
+const { Jobs, Departments, JobTypes, Submissions } = require('../../models');
 
 
 
@@ -10,10 +10,8 @@ router.get('/', async (req, res) => {
       include: 
       [
         { 
-          model: Departments
-        },
-        { 
-          model: JobTypes
+          all: true,
+          nested: true
         },
     ]
     });
@@ -32,14 +30,12 @@ router.get('/bydept/:id', async (req, res) => {
     const jobData = await Jobs.findAll(
       { 
         include: 
-          [
-            { 
-              model: Departments
-            },
-            { 
-              model: JobTypes
-            },
-        ]
+        [
+          { 
+            all: true,
+            nested: true
+          },
+      ]
       },
       {
         where:  {
@@ -68,14 +64,12 @@ router.get('/byjobtype/:id', async (req, res) => {
     const jobData = await Jobs.findAll(
       { 
         include: 
-          [
-            { 
-              model: Departments
-            },
-            { 
-              model: JobTypes
-            },
-        ]
+        [
+          { 
+            all: true,
+            nested: true
+          },
+      ]
       },
       {
         where:  {

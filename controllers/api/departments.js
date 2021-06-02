@@ -5,7 +5,16 @@ const { Departments } = require('../../models');
 //Get All Departments
 router.get('/', async (req, res) => {
   try {
-    const deptData = await Departments.findAll(req.body);
+    const deptData = await Departments.findAll(
+      {
+        include: 
+        [
+          { 
+            all: true,
+            nested: true
+          },
+      ]
+      });
     res.status(200).json(deptData);
   } catch (err) {
     res.status(400).json(err);

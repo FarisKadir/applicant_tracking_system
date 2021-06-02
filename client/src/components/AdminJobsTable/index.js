@@ -1,42 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import {API} from '../../utils/API';
-import JobRow from '../JobRow';
+import AdminJobRow from '../AdminJobRow';
 
-function JobsTable () {
-
-    const {user, isAuthenticated} = useAuth0();
-
-    //Manages the userInfo state and retrieves the user info after the page is rendered and if the user changes.
-    const [userInfo, setUserInfo] = useState();
-    
-    useEffect(() => {
-        if (isAuthenticated) {
-          const auth0Id = user.sub.split("|",2)[1];
-    
-          API.getData(`users/${auth0Id}`)
-            .then(res => {
-              setUserInfo(res.data);
-              console.log(res.data);
-            })
-        }
-      },[user, isAuthenticated])
-
-    const roleCol = '';
-
-    const checkRole = () => {
-        if (isLoaded && userInfo.role_id === 1) {
-            return roleCol = (<th>Submissions</th>)
-        } else {
-            return roleCol = (<th>Apply</th>)
-        }
-    }
+function AdminJobsTable () {
 
     //This manages the state of the jobs and count objects
     const [jobs, setJobs] = useState([]);
     const [count, setCount] = useState(0);
 
-    //Retrieves jobs from the database
+    //Retrieves jobs from the database. This will also return the submissions data.
     const getJobs = () =>   {
         API.getData("jobs")
             .then(res => {
@@ -48,7 +20,7 @@ function JobsTable () {
     //Loads jobs upon the initial render
     useEffect(() => {
         getJobs();
-    },[])
+    },[jobs])
 
     //Loads jobs every 3 seconds after the initial render and after each time the jobs object changes
     useEffect(() => {
@@ -56,14 +28,16 @@ function JobsTable () {
         return () => clearInterval(id);
     },[jobs])
 
+
+
     //Makes sure all data is loaded prior to rendering the table
     const [isLoaded, setIsLoaded] = useState();
 
     useEffect(() => {
-        if (jobs && count && userInfo)  {
+        if (jobs && count)  {
             setIsLoaded(true);
         }
-    },[jobs, count, userInfo])
+    },[jobs, count])
 
 
 
@@ -79,12 +53,13 @@ function JobsTable () {
                             <th>Salary</th>
                             <th>Job Type</th>
                             <th>Department</th>
-                            {roleCol}
+                            <th># of Submissions</th>
+                            <th>View Submissions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {jobs.map((job, index) => (
-                            <JobRow key={index} jobIndex={index} jobData={job} countData={count} />
+                            <AdminJobRow key={index} jobIndex={index} jobData={job}/>
                         ))}
                     </tbody>
                     <tfoot>
@@ -98,4 +73,4 @@ function JobsTable () {
     ) : <h1>Loading Data...</h1>
 };
 
-export default JobsTable;
+export default AdminJobsTable;

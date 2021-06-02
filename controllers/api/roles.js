@@ -5,7 +5,15 @@ const { Roles } = require('../../models');
 //Get All Roles
 router.get('/', async (req, res) => {
   try {
-    const roleData = await Roles.findAll(req.body);
+    const roleData = await Roles.findAll({
+      include: 
+      [
+        { 
+          all: true,
+          nested: true
+        },
+    ]
+    });
     res.status(200).json(roleData);
   } catch (err) {
     res.status(400).json(err);

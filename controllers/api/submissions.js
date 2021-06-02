@@ -1,11 +1,19 @@
 const router = require('express').Router();
-const { Submissions } = require('../../models');
+const { Submissions, Jobs, Users, Departments } = require('../../models');
 
 
 //Get All Submissions
 router.get('/', async (req, res) => {
   try {
-    const subData = await Submissions.findAll(req.body);
+    const subData = await Submissions.findAndCountAll({
+      include: 
+      [
+        { 
+         all: true,
+         nested: true
+        },
+    ]}
+      );
     res.status(200).json(subData);
   } catch (err) {
     res.status(400).json(err);
@@ -39,6 +47,15 @@ router.get('/byuser/:id', async (req, res) => {
     try {
       const subData = await Submissions.findAll(
         {
+          include: 
+          [
+            { 
+              all: true,
+              nested: true
+            },
+        ]
+        },
+        {
           where:  {
             user_id: req.params.id,
           },
@@ -63,6 +80,15 @@ router.get('/byjob/:id', async (req, res) => {
 
     try {
       const subData = await Submissions.findAll(
+        {
+          include: 
+          [
+            { 
+              all: true,
+              nested: true
+            },
+        ]
+        },
         {
           where:  {
             job_id: req.params.id,

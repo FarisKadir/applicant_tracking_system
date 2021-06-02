@@ -17,7 +17,7 @@ const NavBarAuth = () => {
                         <li className="nav-item"><span className="nav-link" >Home</span></li>
                     </Link>
                     <Link to="/jobs">
-                        <li className="nav-item"><span className="nav-link" >Manage Requisitions</span></li>
+                        <li className="nav-item"><span className="nav-link" >Manage Job Openings</span></li>
                     </Link>
                     <Link to="/profile">
                         <li className="nav-item"><span className="nav-link" >Profile</span></li>
@@ -32,8 +32,11 @@ const NavBarAuth = () => {
                         <Link to="/">
                             <li className="nav-item"><span className="nav-link" >Home</span></li>
                         </Link>
+                        <Link to="/jobs">
+                            <li className="nav-item"><span className="nav-link" >View Job Openings</span></li>
+                        </Link>
                         <Link to="/submissions">
-                            <li className="nav-item"><span className="nav-link" >View Submissions</span></li>
+                            <li className="nav-item"><span className="nav-link" >View My Submissions</span></li>
                         </Link>
                         <Link to="/profile">
                             <li className="nav-item"><span className="nav-link" >Profile</span></li>

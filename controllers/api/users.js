@@ -5,7 +5,15 @@ const { Users, Roles } = require('../../models');
 //Get all users
 router.get('/', async (req, res) => {
   try {
-    const userData = await Users.findAll(req.body);
+    const userData = await Users.findAll({
+      include: 
+      [
+        { 
+          all: true,
+          nested: true
+        },
+    ]
+    });
     res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
