@@ -17,10 +17,10 @@ function AdminJobsTable () {
         }).catch(err => {console.log(err)});
     };
 
-    //Loads jobs upon the initial render
+    // //Loads jobs upon the initial render
     useEffect(() => {
         getJobs();
-    },[jobs])
+    },[])
 
     //Loads jobs every 3 seconds after the initial render and after each time the jobs object changes
     useEffect(() => {

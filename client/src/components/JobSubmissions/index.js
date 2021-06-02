@@ -5,6 +5,7 @@ function JobSubmissionsTable (props) {
 
     const subs = props.subInfo;
     
+    
 
     //Makes sure all data is loaded prior to rendering the table
     const [isLoaded, setIsLoaded] = useState();
@@ -30,7 +31,7 @@ function JobSubmissionsTable (props) {
                     </thead>
                     <tbody>
                         {subs.map((sub, index) => (
-                            <ViewSubRow key={index} subIndex={index} subData={sub} />
+                            <ViewSubRow key={index} subIndex={index} subData={sub}  />
                         ))}
                     </tbody>
                     <tfoot>

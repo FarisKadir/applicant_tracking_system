@@ -4,6 +4,7 @@ import {API} from '../../utils/API';
 
 export default function JobForm (props) {
 
+
     //Set the initial state for the job info and update it as the user changes it on the form
     const [jobInfo, setJobInfo] = useState({
         title: "Enter A Title",
@@ -49,15 +50,17 @@ export default function JobForm (props) {
     const handleSubmit = () => {
         if (props.jobInfo) {    
             API.updateData(`jobs/${jobInfo.id}`, jobInfo) 
-            .then(res => (
+            .then(res => {
                 console.log('Updated Existing Job')
-            ))
+                props.handleClose();
+            })
             .catch(err => console.log(err) );
         } else {
             API.createData(`jobs`, [jobInfo]) 
-            .then(res => (
+            .then(res => {
                 console.log('New Job Create')
-            ))
+                props.handleClose();
+            })
             .catch(err => console.log(err));
         };
     };
