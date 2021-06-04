@@ -21,9 +21,7 @@ export default function ViewSub (props) {
             user_id: auth0Id,
             job_id: jobInfo.id
         }]) 
-        .then(res => (
-            console.log("application submitted")
-        ))
+        .then()
         .catch(err => console.log(err) );
     };
 

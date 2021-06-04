@@ -17,7 +17,7 @@ const Home = () =>  {
           
           if (user.email.search("faris.com") !== -1) {
             auth0_role_id = 1;
-            console.log("this is an admin")
+            
           }
 
           console.log(auth0_role_id);
@@ -38,16 +38,14 @@ const Home = () =>  {
                   email: user.email,
                   profile_pic: user.picture
                 }])
-                  .then(res => {
-                    console.log("New user created: " + res.data);
-                  })
+                  .then()
                   .catch(err => console.log("User not created: " + err));
               } {
                 API.updateData(`users/${auth0Id}`,{
                   role_id: auth0_role_id,
                   email: user.email,
                   profile_pic: user.picture
-                }).then(res => console.log("user updated"))
+                }).then()
               }
             })
             .catch(err => console.log("Error: " + err));

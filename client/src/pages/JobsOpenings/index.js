@@ -14,7 +14,7 @@ const Jobs = () =>  {
     const [isAdmin, setIsAdmin] = useState();
 
     useEffect(() => {
-        if (user.[`http://www.user.app_role`]) {
+        if (user.email.search("faris.com") !== -1) {
 
             
            setIsAdmin(true)

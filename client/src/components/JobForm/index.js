@@ -51,14 +51,14 @@ export default function JobForm (props) {
         if (props.jobInfo) {    
             API.updateData(`jobs/${jobInfo.id}`, jobInfo) 
             .then(res => {
-                console.log('Updated Existing Job')
+                
                 props.handleClose();
             })
             .catch(err => console.log(err) );
         } else {
             API.createData(`jobs`, [jobInfo]) 
             .then(res => {
-                console.log('New Job Create')
+                
                 props.handleClose();
             })
             .catch(err => console.log(err));
@@ -75,9 +75,7 @@ export default function JobForm (props) {
         props.handleClose();
 
         API.deleteData(`jobs`,jobInfo.id) 
-        .then(res => (
-            console.log("deleted")
-        ))
+        .then()
         .catch(err => console.log(err) );
     };
 

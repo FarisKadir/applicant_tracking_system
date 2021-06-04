@@ -61,8 +61,8 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     API.updateData(`users/${userInfo.id}`, userInfo)
-      .then(res => console.log("User information was updated"))
-      .catch(err => console.log("User information was not updated"))
+      .then()
+      .catch(err => console.log(err))
   };
 
 
