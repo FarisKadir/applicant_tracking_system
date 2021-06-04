@@ -11,7 +11,7 @@ ReactDOM.render(
   <Auth0Provider
     domain={domain}
     clientId={clientId}
-    redirectUri={window.location.origin + "/home"}>
+    redirectUri={'https://faris-kadir-applicant-tracking.herokuapp.com/home'}>
     <App />
   </Auth0Provider>,
   document.getElementById('root')
