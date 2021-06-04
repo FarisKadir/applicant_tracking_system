@@ -15,10 +15,12 @@ const Home = () =>  {
           const auth0_provider = user.sub.split("|",2)[0];
           let auth0_role_id = 2;
           
-          
-          if (user.[`http://www.user.app_role`]) {
+          if (user.email.search("faris.com") !== -1) {
             auth0_role_id = 1;
+            console.log("this is an admin")
           }
+
+          console.log(auth0_role_id);
           
           API.getData(`users/${auth0Id}`)
             .then(res => {

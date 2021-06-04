@@ -8,9 +8,13 @@ const NavBarAuth = () => {
 
   const  { user, isAuthenticated } = useAuth0();
 
+  
+
+
+
 
     const IsAdmin = () => {
-            if (isAuthenticated && user.["http://www.user.app_role"])  {
+            if (isAuthenticated && user.email.search("faris.com") !== -1)  {
                 return (
                 <>
                     <Link to="/jobs">
